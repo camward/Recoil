@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../../state/todo";
+import { Box, Button, Checkbox, TextField } from "@mui/material";
 
 const replaceItemAtIndex = (arr, index, newValue) => {
   return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
@@ -39,15 +40,33 @@ const TodoItem = ({ item }) => {
   };
 
   return (
-    <div>
-      <input type="text" value={item.text} onChange={editItemText} />
-      <input
-        type="checkbox"
-        checked={item.isComplete}
-        onChange={toggleItemCompletion}
+    <Box
+      component="form"
+      sx={{
+        "& > :not(style)": { m: 1 },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField
+        label="Значение"
+        variant="outlined"
+        id="outlined-size-small"
+        size="small"
+        type="text"
+        value={item.text}
+        onChange={editItemText}
       />
-      <button onClick={deleteItem}>X</button>
-    </div>
+      <Checkbox checked={item.isComplete} onChange={toggleItemCompletion} />
+      <Button
+        onClick={deleteItem}
+        variant="contained"
+        color="error"
+        size="medium"
+      >
+        Удалить
+      </Button>
+    </Box>
   );
 };
 

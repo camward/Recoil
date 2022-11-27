@@ -36,7 +36,7 @@ const todoListStatsState = selector({
     let allText = "";
     todoList
       .filter((item) => !item.isComplete)
-      .map((item) => (allText = allText + " " + item.text));
+      .map((item) => (allText = allText + (allText ? ", " : " ") + item.text));
     const totalUncompletedNum = totalNum - totalCompletedNum;
     const percentCompleted = totalNum === 0 ? 0 : totalCompletedNum / totalNum;
 

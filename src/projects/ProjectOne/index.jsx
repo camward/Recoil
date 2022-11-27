@@ -10,6 +10,7 @@ const ProjectOne = () => {
   const todoList = useRecoilValue(filteredTodoListState);
   return (
     <>
+      <h2>Sync</h2>
       <TodoListStats />
       <div style={{ display: "flex", gap: "10px" }}>
         <TodoItemCreator />
