@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import './index.css';
 import App from './App';
+import ErrorBoundary from './errorBoundary';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -11,7 +12,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <App />
+      <ErrorBoundary>
+        <React.Suspense fallback={<div>Загрузка...</div>}>
+          <App />
+        </React.Suspense>
+      </ErrorBoundary>
     </RecoilRoot>
   </React.StrictMode>
 );
