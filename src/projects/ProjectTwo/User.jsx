@@ -1,10 +1,18 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValueLoadable } from "recoil";
 import { userNameQuery } from "../../state/user";
 
 const User = ({ userID }) => {
-  const userName = useRecoilValue(userNameQuery(userID));
-  return <p>{userName}</p>;
+  const userNameLoadable = useRecoilValueLoadable(userNameQuery(userID));
+
+  switch (userNameLoadable.state) {
+    case "hasValue":
+      return <p>{userNameLoadable.contents}</p>;
+    case "loading":
+      return <div>Загрузка...</div>;
+    case "hasError":
+      throw userNameLoadable.contents;
+  }
 };
 
 export default User;
