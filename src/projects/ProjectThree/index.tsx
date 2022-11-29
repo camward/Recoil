@@ -1,10 +1,12 @@
 import React from "react";
+import Temperature from "./Temperature";
 
 const ProjectThree = () => {
   return (
-    <div>
-      <h3>Project Three</h3>
-    </div>
+    <>
+      <h3>Sync 2</h3>
+      <Temperature />
+    </>
   );
 };
 
