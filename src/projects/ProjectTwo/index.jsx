@@ -8,7 +8,7 @@ const ProjectTwo = () => {
 
   return (
     <>
-      <h2>Async</h2>
+      <h3>Async</h3>
       <p>{userName}</p>
       <br />
       <User userID={2} />
